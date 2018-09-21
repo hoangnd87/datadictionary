@@ -9,7 +9,7 @@ program: '*'
 project: '*'
 description: >
   The collection of all data related to a specific subject in the
-  context of a specific experiment. 
+  context of a specific experiment.
 additionalProperties: false
 submittable: true
 validators: null
@@ -22,7 +22,7 @@ systemProperties:
   - state
 
 links:
-  - name: experiments 
+  - name: experiments
     backref: cases
     label: member_of
     target_type: experiment
@@ -31,7 +31,7 @@ links:
 
 required:
   - submitter_id
-  - experiments 
+  - experiments
 
 uniqueKeys:
   - [id]
@@ -56,7 +56,7 @@ properties:
   disease_type:
     description: "Name of the disease for the case."
     type: string
-  experiments: 
+  experiments:
     $ref: "_definitions.yaml#/to_one"
   project_id:
     $ref: "_definitions.yaml#/project_id"
@@ -64,3 +64,10 @@ properties:
     $ref: "_definitions.yaml#/datetime"
   updated_datetime:
     $ref: "_definitions.yaml#/datetime"
+
+  consent_codes:
+    description: >
+      Consent codes that are used to indicate consent permissions for datasets and/or materials, and relates to the purposes for which datasets and/or material might be removed, stored or used. GRU - For general research use for any research purpose. Example of usage: This includes but is not limited to: health/medical/biomedical purposes, fundamental biology research, the study of population origins or ancestry, statistical methods and algorithms development, and social-sciences research. HMB - Use of the data is limited to health/medical/biomedical purposes; does not include the study of population origins or ancestry. DS-X - Use of the data must be related to [disease]. NPU - Use of the data is limited to not-for-profit organizations and not-for-profit use, non-commercial use. IRB - Requestor must provide documentation of local IRB/REC approval.
+    type: array
+    items:
+      type: string
